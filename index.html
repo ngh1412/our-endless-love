@@ -1,37 +1,22 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bức thư tặng em 💌</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Endless Love</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="page">
-    <div class="stage">
-      <!-- Envelope -->
-      <div id="envelope" class="envelope">
-        <div class="flap"></div>
-        <div class="paper">
-          <div class="paper-inner">
-            <!-- message will be typed into this -->
-            <div id="letterText" class="letter-text" aria-live="polite"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Open button -->
-      <button id="openBtn" class="open-btn" aria-label="Mở thư">💌 Mở thư</button>
-    </div>
-
-    <!-- hearts container (for floating hearts) -->
-    <div id="heartsWrap" class="hearts-wrap" aria-hidden="true"></div>
+  <div class="envelope" id="envelope">
+    <div class="heart"></div>
+    <p class="open-text">💌 Mở thư 💌</p>
   </div>
 
-  <!-- audio: make sure file path matches repo: music/bemore.mp3 -->
-  <audio id="bgAudio" src="music/bemore.mp3" preload="auto"></audio>
+  <div class="letter hidden" id="letter">
+    <div class="letter-content" id="letter-content"></div>
+  </div>
 
+  <audio id="bg-music" src="music.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
 </html>
