@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thư gửi em 💌</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <div class="envelope" id="envelope">
-    <div class="flap"></div>
-    <div class="letter-btn" id="openBtn">💌 Mở thư</div>
-  </div>
-
-  <div class="letter" id="letter">
-    <p id="message"></p>
+  <div class="container">
+    <div class="envelope-wrapper" id="envelope">
+      <div class="envelope">
+        <div class="flap"></div>
+        <div class="letter">
+          <p>Gửi em,</p>
+          <p>Chỉ cần em biết rằng dù chuyện gì xảy ra, anh vẫn luôn ở đây.  
+          Cảm ơn em vì đã đến — vì đã khiến cuộc sống này ấm hơn. 💕</p>
+          <p style="text-align: right;">— Từ người thương của em</p>
+        </div>
+      </div>
+      <button class="open-letter-btn" id="openBtn">💌 Mở thư</button>
+    </div>
   </div>
 
   <audio id="bgMusic" src="music/bemore.mp3"></audio>
-
   <script src="script.js"></script>
 </body>
 </html>
