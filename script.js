@@ -1,22 +1,25 @@
-const openBtn = document.getElementById("openBtn");
 const envelope = document.getElementById("envelope");
-const music = document.getElementById("bgMusic");
+const openBtn = document.getElementById("openBtn");
+const music = document.getElementById("bg-music");
 
 openBtn.addEventListener("click", () => {
-  envelope.querySelector(".envelope").classList.add("open");
-  openBtn.style.display = "none";
+  envelope.classList.add("opened");
   music.play();
-  startHearts();
+  openBtn.style.display = "none";
+  startHeartAnimation();
 });
 
-function startHearts() {
+function startHeartAnimation() {
   setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = Math.random() * 2 + 3 + "s";
-    heart.innerHTML = "❤";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
     document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 5000);
-  }, 400);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 4000);
+  }, 300);
 }
