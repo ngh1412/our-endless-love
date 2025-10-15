@@ -1,73 +1,102 @@
 body {
-  background: linear-gradient(135deg, #ffd6e8, #ffe9f3);
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at center, #4a001f, #2c0013);
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+}
+
+.envelope-wrapper {
+  position: relative;
 }
 
 .envelope {
+  width: 320px;
+  height: 220px;
+  background: #b71c1c;
   position: relative;
-  width: 250px;
-  height: 160px;
-  background: #ffb6c1;
   border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  cursor: pointer;
-  text-align: center;
+  overflow: hidden;
+  transition: all 0.6s ease;
+  transform-style: preserve-3d;
+  perspective: 800px;
 }
 
-.letter-btn {
+.flap {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 20px;
-  color: white;
-  background: #ff4d6d;
-  padding: 10px 20px;
-  border-radius: 25px;
+  width: 100%;
+  height: 50%;
+  top: 0;
+  background: #d32f2f;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.6s ease;
+  z-index: 2;
 }
 
 .letter {
-  display: none;
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  width: 80%;
-  max-width: 500px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  animation: fadeIn 1s ease forwards;
+  background: #fff;
+  width: 90%;
+  height: 85%;
+  margin: auto;
+  margin-top: 12%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.8s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-#message {
-  font-size: 18px;
-  color: #333;
-  white-space: pre-line;
-}
-.heart {
-  position: fixed;
-  bottom: 0;
+.open-letter-btn {
+  background: linear-gradient(135deg, #e53935, #b71c1c);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 40px;
   font-size: 20px;
-  animation: fly 4s linear forwards;
-  opacity: 0.8;
-  pointer-events: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 40px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-@keyframes fly {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh) scale(1.5);
-    opacity: 0;
-  }
+.open-letter-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #f44336, #c62828);
+}
+
+/* Khi mở thư */
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .letter {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Hiệu ứng tim bay */
+.heart {
+  position: absolute;
+  color: #ffb6c1;
+  font-size: 24px;
+  animation: float 4s ease-in infinite;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-800px) scale(0.8); opacity: 0; }
 }
