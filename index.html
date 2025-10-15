@@ -3,34 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thư gửi em 💌</title>
+  <title>Gửi em 💌</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="envelope" class="envelope-wrapper">
-    <div class="envelope">
-      <div class="flap"></div>
+  <div class="container">
+    <div id="envelope" class="envelope">
+      <div class="front"></div>
+      <div class="back"></div>
       <div class="letter">
-        <p>Gửi em,</p>
-        <p>
-          Có lẽ anh không nói được nhiều lời hoa mỹ,  
-          nhưng mỗi lần nghĩ đến em, tim anh giống như vừa bật sáng.
-        </p>
-        <p>
-          Cảm ơn em đã đến, đã ở lại — để anh biết yêu thương là có thật.
-        </p>
-        <p>
-          Bài hát này, là lời anh muốn nói thay những điều còn giấu.  
-          Nếu em nghe, mong em hiểu:  
-          <br>“Anh thương em nhiều lắm.”
+        <p class="message">
+          Gửi em,<br><br>
+          Anh chẳng biết bắt đầu từ đâu, chỉ biết rằng từng ngày trôi qua đều có hình bóng em.  
+          Từ khi em bước vào đời anh, mọi thứ như sáng hơn, ấm hơn.  
+          Anh biết mình chẳng hoàn hảo, nhưng anh thật lòng muốn mang lại cho em những gì dịu dàng nhất.<br><br>
+          Cảm ơn em vì đã khiến anh tin vào tình yêu thêm lần nữa.  
+          Dù tương lai có ra sao, anh vẫn mong được nắm tay em đi cùng.<br><br>
+          — Yêu của em, yêu em mãi 💗
         </p>
       </div>
+      <button id="openBtn">💌 Mở thư</button>
     </div>
-    <button id="openBtn" class="open-letter-btn">💌 Mở thư</button>
   </div>
-
-  <audio id="bg-music" src="music/bemore.mp3"></audio>
-
+  <audio id="bgm" src="music/bemore.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
 </html>
