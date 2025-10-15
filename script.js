@@ -2,24 +2,29 @@ const envelope = document.getElementById("envelope");
 const openBtn = document.getElementById("openBtn");
 const music = document.getElementById("bg-music");
 
-openBtn.addEventListener("click", () => {
-  envelope.classList.add("opened");
-  music.play();
-  openBtn.style.display = "none";
-  startHeartAnimation();
-});
+if (!openBtn || !envelope || !music) {
+  console.error("Một phần tử quan trọng không tìm thấy:", { openBtn, envelope, music });
+}
 
-function startHeartAnimation() {
+openBtn.addEventListener("click", () => {
+  envelope.classList.add("open");
+  openBtn.style.display = "none";
+
+  // phát nhạc
+  music.play().catch(err => {
+    console.warn("Lỗi khi play nhạc:", err);
+  });
+
+  // bắt tim bay
   setInterval(() => {
     const heart = document.createElement("div");
-    heart.classList.add("heart");
+    heart.className = "heart";
     heart.innerHTML = "❤️";
     heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
     document.body.appendChild(heart);
-
     setTimeout(() => {
       heart.remove();
-    }, 4000);
-  }, 300);
-}
+    }, 5000);
+  }, 400);
+});
