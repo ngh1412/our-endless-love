@@ -1,30 +1,29 @@
-const envelope = document.getElementById("envelope");
 const openBtn = document.getElementById("openBtn");
-const music = document.getElementById("bg-music");
-
-if (!openBtn || !envelope || !music) {
-  console.error("Một phần tử quan trọng không tìm thấy:", { openBtn, envelope, music });
-}
+const envelope = document.getElementById("envelope");
+const letter = document.querySelector(".letter");
+const bgm = document.getElementById("bgm");
 
 openBtn.addEventListener("click", () => {
   envelope.classList.add("open");
   openBtn.style.display = "none";
-
-  // phát nhạc
-  music.play().catch(err => {
-    console.warn("Lỗi khi play nhạc:", err);
-  });
-
-  // bắt tim bay
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => {
-      heart.remove();
-    }, 5000);
-  }, 400);
+  setTimeout(() => {
+    letter.classList.add("show");
+    bgm.play().catch(err => console.log("Không phát được nhạc:", err));
+  }, 800);
 });
+
+// Hiệu ứng tim bay
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+  document.body.appendChild(heart);
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = 3 + Math.random() * 2 + "s";
+
+  setTimeout(() => {
+    heart.remove();
+  }, 4000);
+}
+setInterval(createHeart, 400);
