@@ -1,0 +1,84 @@
+:root{
+  --bg1:#3b002d;
+  --bg2:#4a001f;
+  --accent:#c62828;
+  --paper:#fff8f8;
+  --paper-text:#5a0000;
+}
+
+/* page layout */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background: radial-gradient(circle at 20% 20%, #5a002b 0%, var(--bg1) 30%, var(--bg2) 100%);
+  font-family: "Dancing Script", cursive;
+  color: white;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+
+/* center stage */
+.stage{width:100%;max-width:920px;display:flex;flex-direction:column;align-items:center;gap:18px;padding:40px 20px}
+
+/* envelope */
+.envelope{
+  width:360px;height:240px;position:relative;border-radius:12px;
+  perspective:900px;
+  transform-style:preserve-3d;
+  transition: transform .7s cubic-bezier(.2,.9,.2,1);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+  background: linear-gradient(180deg,#6b001f,#450013);
+}
+
+/* the flap (triangle) */
+.flap{
+  position:absolute;left:0;top:0;width:100%;height:56%;
+  background: linear-gradient(180deg,#ff6b81,var(--accent));
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform .7s cubic-bezier(.2,.9,.2,1);
+  z-index:5;
+}
+
+/* inner paper that slides up when opened */
+.paper{
+  position:absolute;left:8%;top:14%;width:84%;height:72%;border-radius:10px;
+  background: var(--paper); color: var(--paper-text); box-shadow: inset 0 -6px 18px rgba(0,0,0,0.06);
+  overflow:hidden; transform: translateY(120%); opacity:0; transition: all .7s ease .28s;
+  border:1px solid rgba(0,0,0,0.06);
+}
+.paper-inner{height:100%;padding:20px;overflow:auto}
+
+/* letter text area */
+.letter-text{white-space:pre-wrap; line-height:1.6; font-size:18px; color:var(--paper-text);}
+
+/* open state */
+.envelope.open .flap{ transform: rotateX(-180deg); }
+.envelope.open .paper{ transform: translateY(0); opacity:1; }
+
+/* open button */
+.open-btn{
+  background: linear-gradient(135deg,#ff6b81,var(--accent));
+  color:white;border:none;padding:14px 34px;border-radius:999px;font-size:18px;font-weight:700;
+  cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,0.25);transition:transform .18s ease, box-shadow .18s ease;
+}
+.open-btn:hover{ transform: translateY(-3px); box-shadow:0 18px 40px rgba(0,0,0,0.32) }
+.open-btn:active{ transform:translateY(-1px) }
+
+/* hearts */
+.hearts-wrap{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:50}
+.heart{
+  position:absolute; font-size:20px; opacity:0.95; transform-origin:center;
+  animation: floatUp linear;
+}
+@keyframes floatUp{
+  0%{ transform: translateY(0) scale(1); opacity:1 }
+  100%{ transform: translateY(-600px) scale(1.25); opacity:0 }
+}
+
+/* responsive */
+@media (max-width:420px){
+  .envelope{ width:300px; height:200px }
+  .paper-inner{ padding:14px }
+  .letter-text{ font-size:16px }
+}
